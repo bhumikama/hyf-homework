@@ -52,3 +52,36 @@ const estimatedPriceJulia = findHousePrice(volumeInMeters2, 70);
 
 const comparePricePeter = compare(estimatedPricePeter, 2500000);
 const comparePriceJulia = compare(estimatedPriceJulia, 1000000);
+
+//Ez Namey (Startup name generator)
+
+const firstWords = [
+  "Easy",
+  "Awesome",
+  "Corporate",
+  "Udaan",
+  "Cred",
+  "Wix",
+  "Agni",
+  "Calibr",
+  "Tevico",
+  "Expertia",
+];
+const secondWords = [
+  " Corporation",
+  " AI",
+  " Flo",
+  " Gigin",
+  " Giscle",
+  " Jungroo",
+  " Librari",
+  " Lifex",
+  " Merak",
+  " Mindful",
+];
+const randomNumber1 = Math.floor(Math.random() * 10); //genarates a random number from 0 to 9
+const randomNumber2 = Math.floor(Math.random() * 10); //genarates a random number from 0 to 9
+const startupName = firstWords[randomNumber1] + secondWords[randomNumber2];
+console.log(
+  `"The startup: ${startupName} contains ${startupName.length} characters`
+);
