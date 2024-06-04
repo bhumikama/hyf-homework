@@ -26,7 +26,7 @@ Find the volume using below formula
 Volume=Width×Height×Depth
 */
 
-function findVolume(width, height, depth) {
+/*function findVolume(width, height, depth) {
   return width * height * depth;
 }
 
@@ -51,7 +51,56 @@ const estimatedPricePeter = findHousePrice(volumeInMeters1, 100);
 const estimatedPriceJulia = findHousePrice(volumeInMeters2, 70);
 
 const comparePricePeter = compare(estimatedPricePeter, 2500000);
-const comparePriceJulia = compare(estimatedPriceJulia, 1000000);
+const comparePriceJulia = compare(estimatedPriceJulia, 1000000);*/
+
+const people = [
+  {
+    name: "Peter",
+    width: 8,
+    height: 10,
+    depth: 10,
+    gardenSize: 100,
+    actualPrice: 2500000,
+  },
+  {
+    name: "Julia",
+    width: 5,
+    height: 8,
+    depth: 11,
+    gardenSize: 70,
+    actualPrice: 1000000,
+  },
+];
+
+function findEstimatedPrice(width, height, depth, gardenSize) {
+  return width * height * depth * 2.5 * 1000 + gardenSize * 300;
+}
+
+function compare(estimatedPrice, costPrice) {
+  if (estimatedPrice > costPrice) {
+    console.log(`paying too little. The estimated price is:${estimatedPrice}`);
+  } else {
+    console.log(
+      `paying more than the estimated cost. The estimated price is:${estimatedPrice}`
+    );
+  }
+}
+
+const estimatedPricePeter = findEstimatedPrice(
+  people[0].width,
+  people[0].height,
+  people[0].depth,
+  people[0].gardenSize
+);
+const estimatedPriceJulia = findEstimatedPrice(
+  people[1].width,
+  people[1].height,
+  people[1].depth,
+  people[1].gardenSize
+);
+
+const comparePricePeter = compare(estimatedPricePeter, people[0].actualPrice);
+const comparePriceJulia = compare(estimatedPriceJulia, people[1].actualPrice);
 
 //Ez Namey (Startup name generator)
 
