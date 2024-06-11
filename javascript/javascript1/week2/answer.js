@@ -93,3 +93,54 @@ addStudentToClass("joe");
 
 const totalStudents = getNumberOfStudents();
 console.log(`Number of Students in class07 : ${totalStudents}`);
+
+//Candy Helper
+//created an array of objects to store different types of candies and their prices
+const candies = [
+  {
+    type: "Sweet",
+    pricePerGram: 0.5,
+  },
+  {
+    type: "Chocolate",
+    pricePerGram: 0.7,
+  },
+  {
+    type: "Toffee",
+    pricePerGram: 1.1,
+  },
+  {
+    type: "Chewing-gum",
+    pricePerGram: 0.03,
+  },
+];
+
+const boughtCandyPrices = [];
+let totalAmount = 0; //total amount spent on buying candies
+const amountToSpend = Math.floor(Math.random() * 100); // to get a whole number
+console.log(`${amountToSpend}`);
+
+function addCandy(candyType, weight) {
+  let candyItem = candies.find((candy) => candy.type === candyType); //returns the first element from candies array that meets the condition
+  if (!candyItem) {
+    console.log(`${candyType} not found`);
+  }
+  const itemPrice = candyItem.pricePerGram * weight;
+  boughtCandyPrices.push(itemPrice);
+}
+
+function canBuyMoreCandy(candyArray) {
+  for (let i = 0; i < candyArray.length; i++) {
+    totalAmount += candyArray[i];
+  }
+  if (totalAmount < amountToSpend) {
+    console.log("You can buy more, so please do!");
+  } else {
+    console.log("Enough candy for you!");
+  }
+}
+
+addCandy("Sweet", 20);
+addCandy("Toffee", 15);
+addCandy("Chewing-gum", 60);
+canBuyMoreCandy(boughtCandyPrices);
