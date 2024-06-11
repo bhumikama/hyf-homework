@@ -45,3 +45,18 @@ function getEventWeekday(daysFromToday) {
   }
 }
 console.log(getEventWeekday(10));
+
+//Weather wear
+function findTypeOfClothes(temperature) {
+  if (temperature < 0) {
+    return "multiple layers of coat and jacket";
+  } else if (temperature >= 0 && temperature <= 10) {
+    return "sweaters and long pants";
+  } else if (temperature > 10 && temperature < 18) {
+    return "light coats or cotton clothes";
+  } else {
+    return "shorts and a t-shirt";
+  }
+}
+const clothesToWear = findTypeOfClothes(18);
+console.log(`You can wear ${clothesToWear}`);
