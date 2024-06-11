@@ -60,3 +60,36 @@ function findTypeOfClothes(temperature) {
 }
 const clothesToWear = findTypeOfClothes(18);
 console.log(`You can wear ${clothesToWear}`);
+
+//Student Manager
+const class07Students = [];
+function addStudentToClass(studentName) {
+  if (class07Students.length < 6 || studentName === "queen") {
+    if (class07Students.includes(studentName)) {
+      console.log(`Student ${studentName} is already in the class`);
+    } else {
+      class07Students.push(studentName);
+    }
+  } else {
+    console.log("Cannot add more students to class 07");
+  }
+}
+
+function getNumberOfStudents() {
+  return class07Students.length;
+}
+
+//trying out different cases as mentioned
+addStudentToClass("krishna");
+addStudentToClass("glen");
+addStudentToClass("dan");
+addStudentToClass("alex");
+addStudentToClass("benjamin");
+addStudentToClass("glen");
+addStudentToClass("hughes");
+addStudentToClass("queen");
+addStudentToClass("queen");
+addStudentToClass("joe");
+
+const totalStudents = getNumberOfStudents();
+console.log(`Number of Students in class07 : ${totalStudents}`);
