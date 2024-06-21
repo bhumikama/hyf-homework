@@ -47,3 +47,56 @@ const travelInformation = {
 
 const travelTime = timeTakenToReturn(travelInformation);
 console.log(travelTime);
+
+//series duration of my life
+const seriesDurations = [
+  {
+    title: "Game of thrones",
+    days: 3,
+    hours: 1,
+    minutes: 0,
+  },
+  {
+    title: "Sopranos",
+    days: 3,
+    hours: 14,
+    minutes: 0,
+  },
+  {
+    title: "The Wire",
+    days: 2,
+    hours: 12,
+    minutes: 0,
+  },
+];
+
+function convertTvTimeToMinutes(seriesArray) {
+  return (
+    seriesArray.days * 24 * 60 + seriesArray.hours * 60 + seriesArray.minutes
+  );
+}
+
+function convertLifeSpanToMinutes(year) {
+  const daysInyYears = 365.25;
+  return year * daysInyYears * 24 * 60;
+}
+
+function logOutSeriesText(seriesDurations) {
+  const avgLifeSpan = 80;
+  let totalMinutes = 0;
+  for (let i = 0; i < seriesDurations.length; i++) {
+    const tvTimeInMinutes = convertTvTimeToMinutes(seriesDurations[i]);
+    const lifespanInMinutes = convertLifeSpanToMinutes(avgLifeSpan);
+    const percentage = (tvTimeInMinutes / lifespanInMinutes) * 100;
+    totalMinutes += tvTimeInMinutes;
+    console.log(
+      `${seriesDurations[i].title} took ${percentage.toFixed(3)}% of my life`
+    );
+  }
+
+  const totalTime =
+    (totalMinutes / convertLifeSpanToMinutes(avgLifeSpan)) * 100;
+  console.log(`In total that is ${totalTime.toFixed(2)}% of my life`);
+}
+
+logOutSeriesText(seriesDurations);
