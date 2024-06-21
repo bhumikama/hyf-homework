@@ -177,3 +177,27 @@ function editNotes(id, editContent, editId) {
 
 const display = editNotes(4, "Wake up early", 101);
 console.log(display);
+
+//Note App
+
+//add activity
+const activities = [];
+
+function addActivity(activity, duration, date) {
+  if (
+    typeof date === "string" &&
+    typeof activity === "string" &&
+    typeof duration === "number"
+  ) {
+    activities.push({ activity, duration, date });
+  } else {
+    console.log(
+      "Please input a string for date and activity, number for duration"
+    );
+    return;
+  }
+}
+
+addActivity("Youtube", 30, "23/7-18");
+addActivity("LinkedIn", 15, "12/3-19");
+console.log(activities);
