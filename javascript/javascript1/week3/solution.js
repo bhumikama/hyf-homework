@@ -116,3 +116,16 @@ saveNote("Go to the Dentist", 3);
 saveNote("Pay Electricity Bill", 4);
 
 console.log(notes);
+
+//get a note by id
+
+function getNote(id) {
+  const noteItem = notes.find((note) => note.id === id);
+  if (!noteItem) {
+    return `id ${id} is not found`;
+  }
+  return noteItem;
+}
+
+const firstNote = getNote(4);
+console.log(firstNote);
