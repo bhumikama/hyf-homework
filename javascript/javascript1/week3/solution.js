@@ -204,9 +204,17 @@ function showStatus(activities, timeLimit) {
     console.log("Add some activities before calling showStatus");
     return;
   } else {
+    const today = getCurrentDate();
+    const todayActivities = activities.filter(
+      (activityElement) => activityElement.date === today
+    );
+    if (todayActivities.length === 0) {
+      console.log("There are no activities found for today");
+    }
+
     let sumOfDuration = 0;
     let numberOfActivities = 0;
-    activities.forEach((element) => {
+    todayActivities.forEach((element) => {
       sumOfDuration += element.duration;
       numberOfActivities++;
     });
@@ -218,5 +226,7 @@ function showStatus(activities, timeLimit) {
     `;
   }
 }
+
+console.log(showStatus(activities, 100));
 
 console.log(showStatus(activities, 100));
