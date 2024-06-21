@@ -230,3 +230,22 @@ function showStatus(activities, timeLimit) {
 console.log(showStatus(activities, 100));
 
 console.log(showStatus(activities, 100));
+
+//most time spent on activity
+function mostTimeSpentActivity() {
+  if (activities.length === 0) {
+    console.log("No activities found");
+    return;
+  }
+  let maxActivityTime = activities[0];
+  activities.forEach((activityItem) => {
+    if (activityItem.duration > maxActivityTime.duration) {
+      maxActivityTime = activityItem;
+    }
+  });
+
+  console.log(
+    `The activity you spent the most time on is : ${maxActivityTime.activity}`
+  );
+}
+mostTimeSpentActivity();
