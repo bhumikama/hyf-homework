@@ -141,3 +141,39 @@ function logOutNotesFormatted() {
 }
 
 logOutNotesFormatted();
+
+//unique features
+
+//delete notes
+function deleteNotes(id) {
+  if (typeof id !== "number") {
+    console.log("Please input number");
+    return;
+  }
+  const noteIndex = notes.findIndex((note) => note.id === id);
+  if (noteIndex !== -1) {
+    notes.splice(noteIndex, 1);
+    return;
+  }
+  console.log(`provided id:${id} is not found.`);
+}
+deleteNotes(2);
+console.log(notes);
+
+//edit notes
+function editNotes(id, editContent, editId) {
+  if (typeof id !== "number") {
+    console.log("Please input number");
+    return;
+  }
+  const note = notes.find((note) => note.id === id);
+  if (!note) {
+    return `id ${id} is not found`;
+  }
+  note.id = editId;
+  note.content = editContent;
+  return notes;
+}
+
+const display = editNotes(4, "Wake up early", 101);
+console.log(display);
