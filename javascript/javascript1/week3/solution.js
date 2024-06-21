@@ -183,23 +183,18 @@ console.log(display);
 //add activity
 const activities = [];
 
-function addActivity(activity, duration, date) {
-  if (
-    typeof date === "string" &&
-    typeof activity === "string" &&
-    typeof duration === "number"
-  ) {
-    activities.push({ activity, duration, date });
-  } else {
-    console.log(
-      "Please input a string for date and activity, number for duration"
-    );
-    return;
-  }
+function getCurrentDate() {
+  return new Date().toLocaleDateString();
+}
+
+function addActivity(activity, duration, date = getCurrentDate()) {
+  activities.push({ activity, duration, date });
 }
 
 addActivity("Youtube", 30, "23/7-18");
 addActivity("LinkedIn", 15, "12/3-19");
+addActivity("Facebook", 40);
+addActivity("Spotify", 23);
 console.log(activities);
 
 //show status and usage limit
