@@ -201,3 +201,27 @@ function addActivity(activity, duration, date) {
 addActivity("Youtube", 30, "23/7-18");
 addActivity("LinkedIn", 15, "12/3-19");
 console.log(activities);
+
+//show status and usage limit
+//show status
+function showStatus(activities, timeLimit) {
+  if (activities.length === 0) {
+    console.log("Add some activities before calling showStatus");
+    return;
+  } else {
+    let sumOfDuration = 0;
+    let numberOfActivities = 0;
+    activities.forEach((element) => {
+      sumOfDuration += element.duration;
+      numberOfActivities++;
+    });
+    if (sumOfDuration > timeLimit) {
+      return "You have reached your limit, no more smartphoning for you!";
+    }
+
+    return `You have added ${numberOfActivities} activities. They amount to ${sumOfDuration} min. of usage"
+    `;
+  }
+}
+
+console.log(showStatus(activities, 100));
