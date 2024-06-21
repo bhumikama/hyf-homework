@@ -129,3 +129,15 @@ function getNote(id) {
 
 const firstNote = getNote(4);
 console.log(firstNote);
+
+//log out notes
+
+function logOutNotesFormatted() {
+  for (let i = 0; i < notes.length; i++) {
+    console.log(
+      `The note with id: ${notes[i].id}, has the following note text: ${notes[i].content}`
+    );
+  }
+}
+
+logOutNotesFormatted();
