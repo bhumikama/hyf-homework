@@ -100,3 +100,19 @@ function logOutSeriesText(seriesDurations) {
 }
 
 logOutSeriesText(seriesDurations);
+
+//save note
+
+const notes = [];
+
+function saveNote(content, id) {
+  const note = { content: content, id: id };
+  notes.push(note);
+}
+
+saveNote("Pick up groceries", 1);
+saveNote("Do laundry", 2);
+saveNote("Go to the Dentist", 3);
+saveNote("Pay Electricity Bill", 4);
+
+console.log(notes);
