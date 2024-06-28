@@ -1,3 +1,11 @@
+//Global Variables
+const travelInformation = {
+  speed: 50,
+  destinationDistance: 432,
+};
+const avgLifeSpan = 80;
+const lifespanInMinutes = convertLifeSpanToMinutes(avgLifeSpan);
+
 //Item Array Removal
 
 const names = [
@@ -11,12 +19,7 @@ const names = [
   "Tala",
 ];
 const nameToRemove = "Ahmad";
-
-for (let i = 0; i < names.length; i++) {
-  if (names[i] === nameToRemove) {
-    names.splice(i, 1); // i represents the index where specified name is present and 1 (number of elements to remove)
-  }
-}
+names.splice(names.indexOf(nameToRemove), 1); // first parameter represents the index where specified name is present and 1 (number of elements to remove)
 
 console.log(names);
 
@@ -35,18 +38,6 @@ function timeTakenToReturn(travelInformation) {
     return "cannot find the time taken for travel as the speed and distance are not numbers";
   }
 }
-
-function padWithZero(time) {
-  return time < 10 ? "0" + time : time;
-}
-
-const travelInformation = {
-  speed: 50,
-  destinationDistance: 432,
-};
-
-const travelTime = timeTakenToReturn(travelInformation);
-console.log(travelTime);
 
 //series duration of my life
 const seriesDurations = [
@@ -82,11 +73,9 @@ function convertLifeSpanToMinutes(year) {
 }
 
 function logOutSeriesText(seriesDurations) {
-  const avgLifeSpan = 80;
   let totalMinutes = 0;
   for (let i = 0; i < seriesDurations.length; i++) {
     const tvTimeInMinutes = convertTvTimeToMinutes(seriesDurations[i]);
-    const lifespanInMinutes = convertLifeSpanToMinutes(avgLifeSpan);
     const percentage = (tvTimeInMinutes / lifespanInMinutes) * 100;
     totalMinutes += tvTimeInMinutes;
     console.log(
@@ -94,8 +83,7 @@ function logOutSeriesText(seriesDurations) {
     );
   }
 
-  const totalTime =
-    (totalMinutes / convertLifeSpanToMinutes(avgLifeSpan)) * 100;
+  const totalTime = (totalMinutes / lifespanInMinutes) * 100;
   console.log(`In total that is ${totalTime.toFixed(2)}% of my life`);
 }
 
@@ -106,8 +94,7 @@ logOutSeriesText(seriesDurations);
 const notes = [];
 
 function saveNote(content, id) {
-  const note = { content: content, id: id };
-  notes.push(note);
+  notes.push({ content, id });
 }
 
 saveNote("Pick up groceries", 1);
@@ -184,7 +171,11 @@ console.log(display);
 const activities = [];
 
 function getCurrentDate() {
-  return new Date().toLocaleDateString();
+  const today = new Date();
+  const day = today.getDate();
+  const month = today.getMonth() + 1;
+  const year = String(today.getFullYear()).slice(-2);
+  return `${day}/${month}-${year}`;
 }
 
 function addActivity(activity, duration, date = getCurrentDate()) {
@@ -200,7 +191,7 @@ console.log(activities);
 //show status and usage limit
 //show status
 function showStatus(activities, timeLimit) {
-  if (activities.length === 0) {
+  if (!activities.length) {
     console.log("Add some activities before calling showStatus");
     return;
   } else {
@@ -208,7 +199,7 @@ function showStatus(activities, timeLimit) {
     const todayActivities = activities.filter(
       (activityElement) => activityElement.date === today
     );
-    if (todayActivities.length === 0) {
+    if (!todayActivities.length) {
       console.log("There are no activities found for today");
     }
 
@@ -216,24 +207,21 @@ function showStatus(activities, timeLimit) {
     let numberOfActivities = 0;
     todayActivities.forEach((element) => {
       sumOfDuration += element.duration;
-      numberOfActivities++;
     });
     if (sumOfDuration > timeLimit) {
       return "You have reached your limit, no more smartphoning for you!";
     }
 
-    return `You have added ${numberOfActivities} activities. They amount to ${sumOfDuration} min. of usage"
+    return `You have added ${todayActivities.length} activities. They amount to ${sumOfDuration} min. of usage"
     `;
   }
 }
 
 console.log(showStatus(activities, 100));
 
-console.log(showStatus(activities, 100));
-
 //most time spent on activity
 function mostTimeSpentActivity() {
-  if (activities.length === 0) {
+  if (!activities.length) {
     console.log("No activities found");
     return;
   }
