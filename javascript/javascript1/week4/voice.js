@@ -1,11 +1,10 @@
 let personName = "";
 let toDoList = [];
 
-function greetWithName(commandArray) {
-  const userName = commandArray.slice(-1);
+function greetWithName(wordsInCommand) {
+  const userName = wordsInCommand.slice(-1);
   if (personName) {
-    console.log(`You already mention your name is : ${userName}`);
-    return;
+    return `You already mention your name is : ${userName}`;
   } else {
     personName = userName;
     return `Nice to meet you,${userName}.`;
@@ -14,26 +13,23 @@ function greetWithName(commandArray) {
 
 function getName() {
   if (personName) {
-    console.log(`Your name is : ${personName}`);
-    return;
+    return `Your name is : ${personName}`;
   } else {
-    console.log(`You haven't mentioned your name yet`);
-    return;
+    return `You haven't mentioned your name yet`;
   }
 }
 
-function addToDo(commandArray, command) {
+function addToDo(wordsInCommand, command) {
   const task = command.slice(4).replace(" to my todo", "").trim();
   if (toDoList.includes(task)) {
-    console.log(`The task "${task}" is already added`);
-    return;
+    return `The task "${task}" is already added`;
   } else {
     toDoList.push(task);
     return `${task} added to your todo`;
   }
 }
 
-function removeToDo(commandArray, command) {
+function removeToDo(wordsInCommand, command) {
   const task = command.slice(7).replace(" from my todo", "").trim();
 
   const taskIndex = toDoList.indexOf(task);
@@ -61,16 +57,15 @@ function getDate() {
   return `${day}. of ${month} ${year}`;
 }
 
-function getResult(commandArray) {
-  //   let expression = commandArray.slice(2).join(" ");
+function getResult(wordsInCommand) {
+  //   let expression = wordsInCommand.slice(2).join(" ");
   //  return eval(expression);
-  const number1 = parseFloat(commandArray[2]);
-  const operator = commandArray[3];
-  const number2 = parseFloat(commandArray[4]);
+  const number1 = parseFloat(wordsInCommand[2]);
+  const operator = wordsInCommand[3];
+  const number2 = parseFloat(wordsInCommand[4]);
 
   if (Number.isNaN(number1) || Number.isNaN(number2)) {
-    console.log("cannot perform mathematical operations");
-    return;
+    return "cannot perform mathematical operations";
   }
   let result;
   switch (operator) {
@@ -93,8 +88,8 @@ function getResult(commandArray) {
   return `The result of the expression  is ${result}`;
 }
 
-function setTimer(commandArray) {
-  const time = parseInt(commandArray[4]);
+function setTimer(wordsInCommand) {
+  const time = parseInt(wordsInCommand[4]);
 
   if (Number.isNaN(time) || time <= 0) {
     return "Please specify a valid time in minutes.";
@@ -102,7 +97,7 @@ function setTimer(commandArray) {
 
   const timeInMilliSeconds = time * 60 * 1000;
 
-  timerId = setTimeout(() => {
+  let timerId = setTimeout(() => {
     console.log("Timer done");
     timerId = null;
   }, timeInMilliSeconds);
@@ -121,50 +116,51 @@ function getQuotes() {
   return quotesArray[randomIndex];
 }
 
-const commandArrays = [
+const commandsList = [
   {
-    command: "Hello my name is",
+    command: "hello my name is",
     action: greetWithName,
   },
   {
-    command: "What is my name",
+    command: "what is my name",
     action: getName,
   },
   {
-    command: "Add",
+    command: "add",
     action: addToDo,
   },
   {
-    command: "Remove",
+    command: "remove",
     action: removeToDo,
   },
   {
-    command: "What is on my todo?",
+    command: "what is on my todo?",
     action: getToDo,
   },
   {
-    command: "What day is it today?",
+    command: "what day is it today?",
     action: getDate,
   },
   {
-    command: "What is",
+    command: "what is",
     action: getResult,
   },
   {
-    command: "Set a timer for",
+    command: "set a timer for",
     action: setTimer,
   },
   {
-    command: "Tell me a morning quote",
+    command: "tell me a morning quote",
     action: getQuotes,
   },
 ];
 
 function getReply(command) {
-  const commandArray = command.split(" ");
-  for (const cmdObject of commandArrays) {
+  command = command.toLowerCase();
+  const wordsInCommand = command.split(" ");
+  for (const cmdObject of commandsList) {
     if (command.startsWith(cmdObject.command)) {
-      return cmdObject.action(commandArray, command);
+      return cmdObject.action(wordsInCommand, command);
     }
   }
   return "command is not recognized";
