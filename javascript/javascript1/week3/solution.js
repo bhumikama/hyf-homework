@@ -6,6 +6,7 @@ const travelInformation = {
 const avgLifeSpan = 80;
 const lifespanInMinutes = convertLifeSpanToMinutes(avgLifeSpan);
 
+
 //Item Array Removal
 
 const names = [
@@ -20,7 +21,6 @@ const names = [
 ];
 const nameToRemove = "Ahmad";
 names.splice(names.indexOf(nameToRemove), 1); // first parameter represents the index where specified name is present and 1 (number of elements to remove)
-
 console.log(names);
 
 //When we will be there
@@ -38,6 +38,9 @@ function timeTakenToReturn(travelInformation) {
     return "cannot find the time taken for travel as the speed and distance are not numbers";
   }
 }
+const travelTime = timeTakenToReturn(travelInformation);
+console.log(travelTime);
+
 
 //series duration of my life
 const seriesDurations = [
@@ -204,20 +207,18 @@ function showStatus(activities, timeLimit) {
     }
 
     let sumOfDuration = 0;
-    let numberOfActivities = 0;
     todayActivities.forEach((element) => {
       sumOfDuration += element.duration;
     });
     if (sumOfDuration > timeLimit) {
       return "You have reached your limit, no more smartphoning for you!";
     }
-
-    return `You have added ${todayActivities.length} activities. They amount to ${sumOfDuration} min. of usage"
-    `;
+   return `You have added ${todayActivities.length} activities. They amount to ${sumOfDuration} min. of usage`;
   }
 }
 
 console.log(showStatus(activities, 100));
+
 
 //most time spent on activity
 function mostTimeSpentActivity() {
