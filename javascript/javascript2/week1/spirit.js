@@ -37,15 +37,15 @@ function setupEventListeners() {
   generateButton.removeEventListener("click", displaySpiritAnimal);
 
   switch (selectedEvent) {
-    case "1":
+    case "click":
       generateButton.addEventListener("click", displaySpiritAnimal);
       break;
 
-    case "2":
+    case "hover":
       nameInput.addEventListener("mouseover", displaySpiritAnimal);
       break;
 
-    case "3":
+    case "input":
       nameInput.addEventListener("input", displaySpiritAnimal);
       break;
   }
