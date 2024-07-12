@@ -3,22 +3,44 @@ console.log("Script loaded");
 const products = getAvailableProducts();
 console.log(products);
 
-const ul = document.querySelector("#productList");
-
 function renderProducts(products) {
+  const ul = document.querySelector("#productList");
+  ul.innerHTML = "";
+
   products.forEach((product) => {
     const li = document.createElement("li");
-    li.innerHTML = `<strong>${product.name}</strong>`;
-    const priceElement = document.createElement("li");
-    priceElement.innerHTML = `price: ${product.price}`;
-    const ratingElement = document.createElement("li");
-    ratingElement.innerHTML = `Rating: ${product.rating}`;
-    const breakElement = document.createElement("br");
-    li.appendChild(priceElement);
-    li.appendChild(ratingElement);
+    li.classList.add("products");
+    li.innerHTML = `
+      <h2>${product.name}</h2>
+      <p>Price: $${product.price.toFixed(2)}</p>
+      <p>Rating: ${product.rating}</p>
+    `;
     ul.appendChild(li);
-    ul.appendChild(breakElement);
   });
 }
+
+function filterProducts() {
+  const searchInput = document
+    .querySelector("#search-input")
+    .value.toLowerCase();
+  const maxPriceInput = parseFloat(
+    document.querySelector("#max-price-input").value // if input is empty parseFloat returns NaN
+  );
+
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.name.toLowerCase().includes(searchInput); // empty string also returns true
+    const matchesPrice = isNaN(maxPriceInput) || product.price <= maxPriceInput;
+    return matchesSearch && matchesPrice;
+  });
+
+  renderProducts(filteredProducts);
+}
+
+document
+  .querySelector("#search-input")
+  .addEventListener("input", filterProducts);
+document
+  .querySelector("#max-price-input")
+  .addEventListener("input", filterProducts);
 
 renderProducts(products);
