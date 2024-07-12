@@ -14,9 +14,17 @@
       <h1>Find Your Products in hyfBay !!</h1>
     </header>
     <main>
-      <div class="search-container">
+      <div class="container">
         <input type="text" id="search-input" placeholder="Search Products.." />
         <input type="number" id="max-price-input" placeholder="Max Price" />
+        <div class="sort-container">
+          <select name="" id="sort-select">
+            <option value="">Sort By</option>
+            <option value="price">Price</option>
+            <option value="name">Name</option>
+            <option value="rating">Rating</option>
+          </select>
+        </div>
       </div>
 
       <ul id="productList"></ul>

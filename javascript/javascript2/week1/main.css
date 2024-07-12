@@ -41,14 +41,14 @@ main {
   flex-grow: 1;
 }
 
-.search-container {
+.container {
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
   flex-wrap: wrap;
 }
 
-.search-container input {
+.container input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -74,6 +74,26 @@ main {
 .products h2 {
   margin-bottom: 15px;
   color: #ff9800;
+}
+
+.sort-container {
+  display: flex;
+  padding: 10px;
+}
+
+.sort-container select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  padding: 1em;
+  color: #000;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+.sort-container select option {
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
 footer {
