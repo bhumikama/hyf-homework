@@ -117,3 +117,43 @@ const jokeCreator = function (shouldTellFunnyJoke, logFunnyJoke, logBadJoke) {
 
 jokeCreator(true, logFunnyJoke, logBadJoke);
 jokeCreator(false, logFunnyJoke, logBadJoke);
+
+//==================================//
+
+function firstFunction() {
+  console.log("first function called");
+}
+
+function secondFunction() {
+  console.log("second function called");
+}
+
+function thirdFunction() {
+  console.log("third function called");
+}
+
+const myArray = [firstFunction, secondFunction, thirdFunction];
+
+for (let func of myArray) {
+  func();
+}
+
+// function declaration and function expression
+
+function declarationFunction() {
+  console.log("normal function");
+}
+
+const constFunction = function () {
+  console.log("function expression");
+};
+
+declarationFunction();
+constFunction();
+
+const person = {
+  age: function () {
+    console.log("you are 25 years old");
+  },
+};
+person.age();
