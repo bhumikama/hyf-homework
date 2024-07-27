@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="gstyle.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box">
+      <h1>Fastest Presser</h1>
+      <input type="number" id="input-seconds" placeholder="Set seconds" />
+      <button type="button" id="start-button">Start Game</button>
+      <button type="button" id="restart-button">Restart Game</button>
+      <p id="countdown"></p>
+      <p id="winner_status"></p>
+    </div>
+    <hr />
+    <div class="two-boxes">
+      <div class="s-box">
+        <p>Press S :</p>
+        <p id="s_count"></p>
+      </div>
+      <div class="l-box">
+        <p>Press L:</p>
+        <p id="l_count"></p>
+      </div>
+    </div>
+    <canvas id="my-canvas" style="display: none"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+
+    <script src="games.js"></script>
+  </body>
+</html>
