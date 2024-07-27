@@ -23,13 +23,15 @@ function filterProducts() {
   const searchInput = document
     .querySelector("#search-input")
     .value.toLowerCase();
-  const maxPriceInput = parseFloat(
-    document.querySelector("#max-price-input").value // if input is empty parseFloat returns NaN
-  );
-
+  const maxPriceInput = document.querySelector("#max-price-input").value;
   const filteredProducts = products.filter((product) => {
-    const matchesSearch = product.name.toLowerCase().includes(searchInput); // empty string also returns true
-    const matchesPrice = isNaN(maxPriceInput) || product.price <= maxPriceInput;
+    const matchesSearch = product.name
+      .toLowerCase()
+      .includes(searchInput.trim()); // empty string also returns true
+    const matchesPrice =
+      maxPriceInput.trim() !== ""
+        ? product.price <= parseFloat(maxPriceInput)
+        : true;
     return matchesSearch && matchesPrice;
   });
 
