@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "name": "Used Apple Airpods",
+        "price": "50",
+        "description": "Battery life is not great"
+    },
+    {
+        "id": 2,
+        "type": "doc",
+        "value": "hello world"
+    },
+    {
+        "id": 3,
+        "name": "old chair",
+        "price": "100",
+        "description": "set of wooden chairs in good condition"
+    },
+    {
+        "id": 4,
+        "name": "Used bags",
+        "price": "25",
+        "description": "waterproof bags made of rubber"
+    }
+]
