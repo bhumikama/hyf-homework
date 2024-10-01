@@ -7,14 +7,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const filePath = path.join(__dirname, "documents.json");
+const databasePath = path.join(__dirname, "documents.json");
 
 app.use(express.json());
 
 app.get("/search", async (req, res) => {
   try {
-    const data = await fs.readFile(filePath, "utf-8");
-    const documents = JSON.parse(data);
+    const documents = await readFile();
     if (req.query.q) {
       const searchString = req.query.q.toLowerCase();
       const filteredDocuments = documents.filter((document) =>
@@ -41,8 +40,7 @@ app.post("/search", async (req, res) => {
         .status(404)
         .json({ message: "Cannot provide both the values" });
     }
-    const data = await fs.readFile(filePath, "utf-8");
-    const documents = JSON.parse(data);
+    const documents = await readFile();
     let filteredDocuments = documents;
 
     if (q) {
@@ -62,22 +60,21 @@ app.post("/search", async (req, res) => {
     }
     return res.json(filteredDocuments);
   } catch (error) {
-    return res.status(404).json({ message: "Error parsing" });
+    return res.status(500).json({ message: "Error parsing" });
   }
 });
 
 app.get("/documents/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const data = await fs.readFile(filePath, "utf-8");
-    const documents = JSON.parse(data);
+    const documents = await readFile();
     const documentMatchingWithId = documents.find(
       (document) => document.id == Number(id)
     );
     if (documentMatchingWithId) {
       return res.json(documentMatchingWithId);
     } else {
-      return res.json({ Message: "No Documents were found with this ID" });
+      return res.status(404).json({ Message: "No Documents were found with this ID" });
     }
   } catch (error) {
     return res.status(404).json({ message: "Error parsing" });
@@ -87,3 +84,9 @@ app.get("/documents/:id", async (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+
+async function readFile(){
+  const data = await fs.readFile(databasePath, "utf-8");
+  return JSON.parse(data);
+}
