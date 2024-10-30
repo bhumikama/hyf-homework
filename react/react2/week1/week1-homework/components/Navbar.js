@@ -48,9 +48,13 @@ function Navbar() {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          ReactApp
+        <Typography
+          variant="h6"
+          sx={{ "&:hover": { textDecoration: "underline" }, flexGrow: 1 }}
+        >
+          <Link href={"/"}>ReactApp</Link>
         </Typography>
+
         {isMobile ? (
           <>
             <IconButton color="inherit" onClick={handleDrawerToggle}>
@@ -61,7 +65,9 @@ function Navbar() {
         ) : (
           navLinkItems.map((link) => (
             <Link href={link.url} passHref key={link.name}>
-              <Button color="inherit">{link.name}</Button>
+              <Button color="inherit" className="hover:bg-sky-400">
+                {link.name}
+              </Button>
             </Link>
           ))
         )}
