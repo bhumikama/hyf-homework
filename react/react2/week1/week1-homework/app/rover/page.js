@@ -37,7 +37,6 @@ export default function RoverPhoto() {
     };
     fetchRoverPhotos();
   }, []);
-  console.log(roverPhotos);
   return (
     <>
       <h1 className="text-3xl text-center font-bold my-6">Mars Rover Photos</h1>

@@ -11,7 +11,6 @@ export default async function AstronomyPic() {
     throw new Error("Astronomy picture not found");
   }
   const astronomyPic = await apiResponse.json();
-  console.log(astronomyPic);
   return (
     <div className="min-h-screen w-full">
       {astronomyPic ? (
