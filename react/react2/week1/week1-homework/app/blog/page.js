@@ -12,9 +12,9 @@ function Blog() {
         </h4>
       </div>
       <div>
-        {blogs.map((blog, index) => (
-          <Link href={`/blog/${blog}`}>
-            <Button key={`post-${index}`} variant="contained" className="mx-2">
+        {blogs.map((blog) => (
+          <Link key={blog} href={`/blog/${blog}`}>
+            <Button variant="contained" className="mx-2">
               {blog}
             </Button>
           </Link>
