@@ -13,7 +13,7 @@ export default async function AstronomyPic() {
   const astronomyPic = await apiResponse.json();
   return (
     <div className="min-h-screen w-full">
-      {astronomyPic ? (
+      {astronomyPic && (
         <div className="flex flex-col items-center justify-center gap-5 py-5">
           <img
             className="border-2 h-96 w-96"
@@ -23,10 +23,6 @@ export default async function AstronomyPic() {
           <div className="max-w-2xl bg-[#262b40] py-5 px-6 mx-3">
             <p className="text-md mx-auto">{astronomyPic.explanation}</p>
           </div>
-        </div>
-      ) : (
-        <div>
-          <p>Loading the picture....</p>
         </div>
       )}
     </div>
