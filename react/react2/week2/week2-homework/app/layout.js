@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { AccordionProvider } from "./context/AccordionContext";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -23,8 +24,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
+        {/* Wrapping the context provider so that the context variables are shared across the entire tree */}
+        <AccordionProvider>
+          <Navbar />
+          <main>{children}</main>
+        </AccordionProvider>
       </body>
     </html>
   );
