@@ -28,6 +28,7 @@ function Navbar() {
     { name: "Task 2", url: "/task2" },
     { name: "Task 3", url: "/task3" },
     { name: "Task 4", url: "/task4" },
+    { name: "Task 5", url: "/task5" },
   ];
 
   const drawer = (

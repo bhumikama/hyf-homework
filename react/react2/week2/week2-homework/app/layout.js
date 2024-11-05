@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { AccordionProvider } from "./context/AccordionContext";
 import { CounterProvider } from "./context/CounterContext";
+import { ToDoProvider } from "./context/ToDoContext";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -26,12 +27,14 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Wrapping the context provider so that the context variables are shared across the entire tree */}
-        <CounterProvider>
-          <AccordionProvider>
-            <Navbar />
-            <main>{children}</main>
-          </AccordionProvider>
-        </CounterProvider>
+        <ToDoProvider>
+          <CounterProvider>
+            <AccordionProvider>
+              <Navbar />
+              <main>{children}</main>
+            </AccordionProvider>
+          </CounterProvider>
+        </ToDoProvider>
       </body>
     </html>
   );

@@ -1,8 +1,8 @@
-import Counter from "./Counter";
+import ToDoList from "./ToDoList";
 export default function Page() {
   return (
     <div>
-      <Counter />
+      <ToDoList />
     </div>
   );
 }
