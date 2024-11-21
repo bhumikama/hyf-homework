@@ -1,5 +1,7 @@
 Broccoli
 Carrot
-Onion
+Beans
 Capsicum
 Cucumber
+Potato
+Tomato
